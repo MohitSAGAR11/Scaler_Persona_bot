@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // fill with your frontend URL
+  origin: "https://personabot-scaler.netlify.app", // fill with your frontend URL
   methods: ['GET', 'POST'],
   credentials: true
 }));
