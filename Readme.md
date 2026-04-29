@@ -1,15 +1,9 @@
 # Scaler Persona AI Chatbot
 
-> Chat with Scaler's founders and Head of Instructors — Anshuman Singh, Abhimanyu Saxena, and Kshitij Mishra — powered by Google Gemini.
+> Chat with Scaler's founders and Head of Instructors — Anshuman Singh, Abhimanyu Saxena, and Kshitij Mishra — powered by OpenRouter.
 
 **Live Demo:** [your-deployed-url-here]  
 **Assignment:** Prompt Engineering | Scaler Academy
-
----
-
-## Screenshots
-
-> _Add screenshots of the running app here_
 
 ---
 
@@ -31,7 +25,7 @@
 |----------|-----------------------------|
 | Frontend | React 18, CSS custom props  |
 | Backend  | Node.js, Express            |
-| AI       | Google Gemini 1.5 Flash     |
+| AI       | OpenRouter Models    |
 | Fonts    | Syne, JetBrains Mono, Inter |
 
 ---
@@ -99,42 +93,6 @@ npm install
 npm start
 ```
 
-The frontend runs on **http://localhost:3000**
-
----
-
-## Deployment
-
-### Backend (Railway / Render)
-1. Push the `backend/` folder (or the full repo) to GitHub
-2. Create a new service on Railway or Render pointing to `backend/`
-3. Set environment variable: `GEMINI_API_KEY=your_key`
-4. Deploy — note the public URL (e.g., `https://scaler-chatbot-backend.up.railway.app`)
-
-### Frontend (Vercel / Netlify)
-1. Create a new project pointing to `frontend/`
-2. Set environment variable: `REACT_APP_API_URL=https://your-backend-url`
-3. Deploy — the app is live
-
----
-
-## Environment Variables
-
-### Backend `.env`
-```
-GEMINI_API_KEY=your_gemini_api_key_here
-PORT=3001
-FRONTEND_URL=http://localhost:3000
-```
-
-### Frontend `.env`
-```
-REACT_APP_API_URL=http://localhost:3001
-```
-
-> ⚠️ **Never commit `.env` files.** Only `.env.example` files are in the repo.
-
----
 
 ## API Endpoints
 

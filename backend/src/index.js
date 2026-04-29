@@ -7,7 +7,6 @@ const personas = require("./personas");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
 app.use(cors({
   origin: 'http://localhost:5173',
   methods: ['GET', 'POST'],
@@ -15,22 +14,21 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Initialize OpenAI client configured for OpenRouter
+
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
   defaultHeaders: {
-    "HTTP-Referer": "http://localhost:3001", // Optional, for OpenRouter rankings
-    "X-Title": "Scaler Chatbot", // Optional
+    "HTTP-Referer": "http://localhost:3001", 
+    "X-Title": "Scaler Chatbot", 
   }
 });
 
-// Health check
+
 app.get("/health", (req, res) => {
   res.json({ status: "ok", message: "Scaler Chatbot Backend is running" });
 });
 
-// Get all personas metadata
 app.get("/api/personas", (req, res) => {
   const meta = Object.values(personas).map(
     ({ id, name, title, avatar, color, chips }) => ({
@@ -40,11 +38,11 @@ app.get("/api/personas", (req, res) => {
   res.json(meta);
 });
 
-// Chat endpoint
+
 app.post("/api/chat", async (req, res) => {
   const { personaId, messages } = req.body;
 
-  // Validation
+
   if (!personaId || !messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: "personaId and messages array are required." });
   }
@@ -55,18 +53,16 @@ app.post("/api/chat", async (req, res) => {
   }
 
   try {
-    // Format messages for OpenRouter/OpenAI format
-    // We prepent the system prompt as a 'system' message
     const formattedMessages = [
       { role: "system", content: persona.systemPrompt },
       ...messages.map(msg => ({
-        role: msg.role, // 'user' or 'assistant'
+        role: msg.role, 
         content: msg.content
       }))
     ];
 
     const response = await openai.chat.completions.create({
-      model: "openai/gpt-oss-120b:free", // You can also use "openai/gpt-3.5-turbo" or others
+      model: "nvidia/nemotron-3-nano-30b-a3b:free",
       messages: formattedMessages,
     });
 
@@ -77,7 +73,6 @@ app.post("/api/chat", async (req, res) => {
   } catch (err) {
     console.error("OpenRouter API error:", err);
 
-    // Handle specific OpenRouter/OpenAI errors
     if (err.status === 401) {
       return res.status(401).json({ error: "Invalid OpenRouter API key." });
     }
