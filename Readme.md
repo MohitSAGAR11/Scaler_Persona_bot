@@ -2,7 +2,7 @@
 
 > Chat with Scaler's founders and Head of Instructors — Anshuman Singh, Abhimanyu Saxena, and Kshitij Mishra — powered by OpenRouter.
 
-**Live Demo:** [your-deployed-url-here]  
+**Live Demo:** [(https://personabot-scaler.netlify.app/)]  
 **Assignment:** Prompt Engineering | Scaler Academy
 
 ---
