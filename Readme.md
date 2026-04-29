@@ -81,14 +81,14 @@ npm install
 npm run dev
 ```
 
-The backend runs on **http://localhost:3001**
+The backend runs on **https://scaler-persona-bot-2.onrender.com**
 
 ### 3. Set up the frontend
 
 ```bash
 cd ../frontend
 cp .env.example .env
-# REACT_APP_API_URL=http://localhost:3001 (already set)
+# REACT_APP_API_URL=https://scaler-persona-bot-2.onrender.com
 npm install
 npm start
 ```
